@@ -101,7 +101,7 @@ easily to your version control system.
 
   1.5 - Single Docker Files
   .
-  ├── Vagrantfile - Vagrant configuration file
+  ├── Vagrantfile - Vagrant configuration file /
   ├── config
   │   └── init.sh - Provision shell script
   ├── guest
