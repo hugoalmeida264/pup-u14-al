@@ -1,0 +1,90 @@
+
+
+Vagrant.configure("2") do |config|
+
+# nGinx LB configuration set appart because of forward port
+ config.vm.define :lb do |lb_config|
+      lb_config.vm.hostname = "lb"
+      lb_config.vm.network "private_network", ip: "192.168.248.40"
+      lb_config.vm.box  = "puppetlabs/ubuntu-14.04-64-nocm"
+      lb_config.vm.network "forwarded_port", guest: 80, host: 80
+      lb_config.vm.provider :virtualbox do |net|
+      	net.customize ["modifyvm", :id, "--memory", 512, "--cpus", 1]
+      end # end of net 
+      lb_config.vm.synced_folder ".", "/vagrant", disabled: true
+      lb_config.vm.synced_folder "guest/", "/vagrant/local"
+      lb_config.vm.provision "shell", path: "config/init.sh"
+      lb_config.vm.provision "puppet" do |puppet|
+        puppet.manifests_path = "guest/puppet/"
+        puppet.manifest_file = "init_lb.pp"
+      end # End lb_config
+ end # End config
+
+# app nodes defenitions
+app_servers = {
+  "app1" => { :ip => "192.168.248.41", :cpus => 1, :mem => 512 },
+  "app2" => { :ip => "192.168.248.42", :cpus => 1, :mem => 512 }
+}
+
+app_servers.each_with_index do |(hostname, info), index|
+
+    config.vm.define hostname do |cfg|
+      cfg.vm.provider :virtualbox do |vb, override|
+        config.vm.box = "puppetlabs/ubuntu-14.04-64-nocm"
+        override.vm.network :private_network, ip: "#{info[:ip]}"
+        override.vm.hostname = hostname
+	override.vm.synced_folder ".", "/vagrant", disabled: true
+        override.vm.synced_folder "guest/", "/vagrant/local"
+	override.vm.provision "shell", path: "config/init.sh"
+	override.vm.provision "puppet" do |puppet|
+               puppet.manifests_path = "guest/puppet/"
+               puppet.manifest_file = "init_app.pp"
+        end # End of puppet        
+	vb.name = hostname
+        vb.customize ["modifyvm", :id, "--memory", info[:mem], "--cpus", info[:cpus], "--hwvirtex", "on"]
+      end # end provider
+    end # end config
+
+  end # end cluster
+
+
+
+# nGinx APP servers configuration 
+# app_servers.each_with_index do |(hostname, info), index|
+#      config.vm.define hostname do |app_config|
+#      app_config.vm.provider :virtualbox do |stat, dyna, netp, pp|
+#        stat.box = "puppetlabs/ubuntu-14.04-64-nocm"
+#	stat.vm.synced_folder ".", "/vagrant", disabled: true
+#	stat.vm.synced_folder "guest/", "/vagrant/local"
+#	stat.vm.provision "shell", path: "config/init.sh"
+#        dyna.network "private_network", ip: "#{info[:ip]}"
+#        dyna.hostname = hostname
+#        dyna.vm.provider :virtualbox do |net|
+#         net.customize ["modifyvm", :id, "--memory", 512, "--cpus", 1]
+#        end # end of net
+#	stat.vm.provision "puppet" do |puppet|
+#        	puppet.manifests_path = "guest/puppet/"
+#        	puppet.manifest_file = "init_app.pp"
+#        end # End of puppet
+#       end # end provider
+#      end # end config
+#end # end app_servers
+
+end # end of Vagrant        
+
+
+
+ # =======================================================
+# Vagrant.configure("2") do |config|
+
+#  config.vm.box = "puppetlabs/ubuntu-14.04-64-nocm"
+#  config.vm.network "forwarded_port", guest: 80, host: 80
+#  config.vm.provision "shell", path: "config/init.sh"
+#  config.vm.hostname = "docker.al.local"
+#  config.vm.synced_folder ".", "/vagrant", disabled: true
+#  config.vm.synced_folder "guest/", "/vagrant/local"
+#  config.vm.provision "puppet" do |puppet| 
+#	puppet.manifests_path = "guest/puppet/" 
+#	puppet.manifest_file = "init_local.pp"
+#  end
+# end
