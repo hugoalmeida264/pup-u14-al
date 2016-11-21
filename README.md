@@ -153,6 +153,7 @@ Workaround: run vagrant up --provision to re-rerun puppet in all severs. See bac
 
 Vagrant 1.8.7 has an issue on my Mac which prevents to download the vagrant machines,
 Workaround - downgrade to version 1.8.4
+
 =============================================
 - Backlog:
 =============================================
