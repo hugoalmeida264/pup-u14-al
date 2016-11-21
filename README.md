@@ -16,11 +16,7 @@ Table of Contents:
   1.4 - Vagrant<br />
   1.5 - Single Docker Files<br />
   1.6 - Cluster Files<br />
-2 - The Guest<br />
-  2.1 - Setup<br />
-  2.2 - Tools<br />
-  2.3 - Docker<br />
-  2.4 - Nginx<br />
+
 - Known issues:<br />
 - Backlog:
 
