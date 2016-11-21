@@ -88,59 +88,59 @@ easily to your version control system.
 - Setup:
 =============================================
 
-1 - The host
-  1.1 - OS version
-    MacOS Sierra 10.12.1
-  1.2 - Editor
-    Vim
-    Atom
-  1.3 - Type 2 virtualization
-    Oracle Virtualbox 5.0.28 r111378
-  1.4 - Vagrant
-    Vagrant 1.8.4
+1 - The host<br />
+  1.1 - OS version<br />
+    MacOS Sierra 10.12.1<br />
+  1.2 - Editor<br />
+    Vim<br />
+    Atom<br />
+  1.3 - Type 2 virtualization<br />
+    Oracle Virtualbox 5.0.28 r111378<br />
+  1.4 - Vagrant<br />
+    Vagrant 1.8.4<br />
 
-  1.5 - Single Docker Files
-  .
-  ├── Vagrantfile - Vagrant configuration file /
-  ├── config
-  │   └── init.sh - Provision shell script
-  ├── guest
-  │   ├── docker
-  │   │   ├── config
-  │   │   │   └── site.conf - Nginx app server Docker App default.conf file
-  │   │   ├── docker-compose.yml - Docker-compose configuration
-  │   │   └── html
-  │   │       └── hello-world
-  │   │           └── index.html - html to display hello-world
-  │   └── puppet
-  │       └── init_local.pp - puppet manifest
-  └── install.sh - script to initiate provisioning, detects if port 80 is free and
-                  breaks execution if error condition is met.
+  1.5 - Single Docker Files<br />
+  .<br />
+  ├── Vagrantfile - Vagrant configuration file<br />
+  ├── config<br />
+  │   └── init.sh - Provision shell script<br />
+  ├── guest<br />
+  │   ├── docker<br />
+  │   │   ├── config<br />
+  │   │   │   └── site.conf - Nginx app server Docker App default.conf file<br />
+  │   │   ├── docker-compose.yml - Docker-compose configuration<br />
+  │   │   └── html<br />
+  │   │       └── hello-world<br />
+  │   │           └── index.html - html to display hello-world<br />
+  │   └── puppet<br />
+  │       └── init_local.pp - puppet manifest<br />
+  └── install.sh - script to initiate provisioning, detects if port 80 is free and<br />
+                  breaks execution if error condition is met.<br />
 
-  1.6 - Cluster Files
-.
-├── Vagrantfile  - Vagrant configuration file
-├── config
-│   └── init.sh - Provision shell script
-├── guest
-│   ├── docker
-│   │   ├── app
-│   │   │   ├── config
-│   │   │   │   └── site.conf - Nginx app server Docker App default.conf file
-│   │   │   ├── docker-compose.yml - Docker-compose configuration
-│   │   │   └── log.conf
-│   │   ├── html
-│   │   │   └── random
-│   │   │       ├── index.html - html to display quote
-│   │   │       └── newquotes.js - js function to pull and transform API call
-│   │   └── lb
-│   │       ├── config
-│   │       │   └── default.conf - Nginx lb server Docker App default.conf file
-│   │       └── docker-compose.yml - Docker-compose configuration
-│   └── puppet
-│       ├── init_app.pp - Puppet manifest for app server
-│       └── init_lb.pp - Puppet manifest for load balancer server
-└── install.sh - script to initiate provisioning, detects if port 80 is free and
+  1.6 - Cluster Files<br />
+.<br />
+├── Vagrantfile  - Vagrant configuration file<br />
+├── config<br />
+│   └── init.sh - Provision shell script<br />
+├── guest<br />
+│   ├── docker<br />
+│   │   ├── app<br />
+│   │   │   ├── config<br />
+│   │   │   │   └── site.conf - Nginx app server Docker App default.conf file<br />
+│   │   │   ├── docker-compose.yml - Docker-compose configuration<br />
+│   │   │   └── log.conf<br />
+│   │   ├── html<br />
+│   │   │   └── random<br />
+│   │   │       ├── index.html - html to display quote<br />
+│   │   │       └── newquotes.js - js function to pull and transform API call<br />
+│   │   └── lb<br />
+│   │       ├── config<br />
+│   │       │   └── default.conf - Nginx lb server Docker App default.conf file<br />
+│   │       └── docker-compose.yml - Docker-compose configuration<br />
+│   └── puppet<br />
+│       ├── init_app.pp - Puppet manifest for app server<br />
+│       └── init_lb.pp - Puppet manifest for load balancer server<br />
+└── install.sh - script to initiate provisioning, detects if port 80 is free and<br />
                 breaks execution if error condition is met.
 
 
