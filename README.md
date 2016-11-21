@@ -4,29 +4,28 @@ Demo with puppetlabs/boxes/ubuntu-14.04-64-nocm hello world vagrant app
 Table of Contents:
 =============================================
 
-- Credits:
-- Changelog:
-- Known issues:
-- Introduction:
-- Setup:
-1 - The host
-  1.1 - OS version
-  1.2 - Editor
-  1.3 - Type 2 virtualization
-  1.4 - Vagrant
-  1.5 - Scripts
-  1.5.1 -
-  1.6 - Observations
-2 - The Guest
-  2.1 - Setup
-  2.2 - Tools
-  2.3 - Docker
-  2.4 - Nginx
-- Known issues:
+- Credits:<br />
+- Changelog:<br />
+- Known issues:<br />
+- Introduction:<br />
+- Setup:<br />
+1 - The host<br />
+  1.1 - OS version<br />
+  1.2 - Editor<br />
+  1.3 - Type 2 virtualization<br />
+  1.4 - Vagrant<br />
+  1.5 - Single Docker Files<br />
+  1.6 - Cluster Files<br />
+2 - The Guest<br />
+  2.1 - Setup<br />
+  2.2 - Tools<br />
+  2.3 - Docker<br />
+  2.4 - Nginx<br />
+- Known issues:<br />
 - Backlog:
 
 =============================================
-- Credits:
+Credits:
 =============================================
 
 I didn't pulled this off on my own, I had many help guidance
@@ -85,7 +84,7 @@ are stored in the host disk so you can change the configuration and add them
 easily to your version control system.
 
 =============================================
-- Setup:
+Setup:
 =============================================
 
 1 - The host<br />
@@ -145,7 +144,7 @@ easily to your version control system.
 
 
 =============================================
-- Known issues:
+Known issues:
 =============================================
 
 Vagrant reload - crashes docker 
@@ -155,7 +154,7 @@ Vagrant 1.8.7 has an issue on my Mac which prevents to download the vagrant mach
 Workaround - downgrade to version 1.8.4
 
 =============================================
-- Backlog:
+Backlog:
 =============================================
 
 - Add crontab for "puppet apply"
