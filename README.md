@@ -148,10 +148,11 @@ easily to your version control system.
 - Known issues:
 =============================================
 
-Vagrant reload - crashes docker, Workaround: run vagrant up --provision to re-rerun puppet in all severs. See backlog for more details of fix
+Vagrant reload - crashes docker 
+Workaround: run vagrant up --provision to re-rerun puppet in all severs. See backlog for more details of future fix
 
 Vagrant 1.8.7 has an issue on my Mac which prevents to download the vagrant machines,
-workaround - downgrade to version 1.8.4
+Workaround - downgrade to version 1.8.4
 =============================================
 - Backlog:
 =============================================
