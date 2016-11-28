@@ -153,6 +153,12 @@ Workaround - downgrade to version 1.8.4
 Backlog:
 =============================================
 
+- Improve README doc
+
+- Resolve premissions issue with cluster
+
+- Validate Ngnix configuration
+
 - Add crontab for "puppet apply"
 
 - Add crontab to docker-compose refresh
@@ -164,4 +170,4 @@ from newquotes.js.
 
 - Improve documentation at the code level with comments.
 
-- resolve "Warning: Could not retrieve fact fqdn" @puppet provisioning
+- Resolve "Warning: Could not retrieve fact fqdn" @puppet provisioning
